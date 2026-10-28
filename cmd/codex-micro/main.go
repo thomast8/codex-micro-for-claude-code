@@ -21,7 +21,7 @@ import (
 	"github.com/dustinwdev/codex-micro-for-claude-code/internal/desktop"
 )
 
-const version = "0.8.0"
+const version = "0.8.1"
 
 const usage = `usage: codex-micro <command>
 

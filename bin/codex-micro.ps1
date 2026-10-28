@@ -28,7 +28,7 @@ if (-not (Test-Path $program)) {
     $program = Join-Path $cache $name
     if (-not (Test-Path $program)) {
         $version = $name -replace '^codex-micro-([0-9.]+)-.*$', '$1'
-        $url = "https://github.com/dustinwdev/codex-micro-for-claude-code/releases/download/v$version/$name"
+        $url = "https://github.com/thomast8/codex-micro-for-claude-code/releases/download/v$version/$name"
         New-Item -ItemType Directory -Force $cache | Out-Null
         $download = Join-Path $cache ".download-$PID"
         try {
