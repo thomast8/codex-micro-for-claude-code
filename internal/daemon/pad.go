@@ -75,11 +75,15 @@ func (d *Daemon) deviceLoop(ctx context.Context) {
 }
 
 func (d *Daemon) open() *pad.Device {
-	found := pad.Find()
-	if len(found) == 0 {
+	d.mu.Lock()
+	d.reload()
+	channel := d.config.Channel
+	d.mu.Unlock()
+	chosen, ok := pad.Pick(pad.Find(), channel)
+	if !ok {
 		return nil
 	}
-	device, err := pad.Open(found[0], d.onNotify)
+	device, err := pad.Open(chosen, d.onNotify)
 	var firmware struct {
 		Version string `json:"version"`
 	}

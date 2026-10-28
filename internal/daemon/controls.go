@@ -213,6 +213,12 @@ func (d *Daemon) control(section, name string) {
 // action is what a control does, from config.toml as it is now. The caller
 // holds d.mu.
 func (d *Daemon) action(section, name string) config.Action {
+	d.reload()
+	return d.config.Action(section, name)
+}
+
+// reload rereads config.toml when it has changed. The caller holds d.mu.
+func (d *Daemon) reload() {
 	if stamp := config.Modified(d.configPath); stamp != d.configStamp {
 		var problems []string
 		d.config, problems = config.Load(d.configPath)
@@ -222,7 +228,6 @@ func (d *Daemon) action(section, name string) config.Action {
 			d.log.Println("config:", p)
 		}
 	}
-	return d.config.Action(section, name)
 }
 
 // target is the session a control acts on: the focused one, else the one a

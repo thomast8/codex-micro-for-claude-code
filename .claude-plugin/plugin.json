@@ -1,6 +1,6 @@
 {
   "name": "codex-micro",
-  "version": "0.8.0",
+  "version": "0.8.1",
   "description": "Use an OpenAI Codex Micro with Claude Code: a status light and key per session, approve and deny from the pad, hold-to-dictate, and every control remappable",
   "author": {
     "name": "dustinwdev",

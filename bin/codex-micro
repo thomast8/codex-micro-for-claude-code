@@ -32,7 +32,7 @@ program=$cache/$name
 if [ ! -x "$program" ]; then
 	version=${name#codex-micro-}
 	version=${version%-"$os"-"$arch"}
-	url=https://github.com/dustinwdev/codex-micro-for-claude-code/releases/download/v$version/$name
+	url=https://github.com/thomast8/codex-micro-for-claude-code/releases/download/v$version/$name
 	mkdir -p "$cache"
 	download=$(mktemp "$cache/.download.XXXXXX")
 	trap 'rm -f "$download"' EXIT
